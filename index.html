@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date ♥ counter</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>I love you</h1>
+
+        <div class="wrap">
+            <div id="heart"></div>
+            <p class="days"><span id="total-days">3545</span> days</p>
+        </div>
+        <p id="total"><span id="yearsDifference"></span> years and <span id="remainingDays"></span> days</p>
+        <p class="bottom">Since 26.01.2017</p>
+    </div>
+   
+</body>
+</html>
+<script>
+    // Устанавливаем дату начала (26 января 2017 года)
+const startDate = new Date('2017-01-26');
+const totalDaysOutput = document.getElementById('total-days')
+const yearsDifferenceOutput = document.getElementById('yearsDifference')
+const remainingDaysOutput = document.getElementById('remainingDays')
+// Получаем текущую дату
+const currentDate = new Date();
+
+// Вычисляем разницу в миллисекундах между текущей датой и начальной датой
+const timeDifference = currentDate - startDate;
+
+const millisecondsInDay = 1000 * 60 * 60 * 24;
+const daysDifference = Math.floor(timeDifference / millisecondsInDay);
+
+totalDaysOutput.textContent = daysDifference
+
+const yearsDifference = Math.floor(daysDifference / 365);
+const remainingDays = daysDifference % 365;
+
+yearsDifferenceOutput.textContent = yearsDifference
+remainingDaysOutput.textContent = remainingDays
+
+console.log(`Количество лет и дней с 26 января 2017 года по текущий день: ${yearsDifference} лет и ${remainingDays} дней`);
+
+</script>
